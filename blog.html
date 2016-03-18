@@ -53,28 +53,101 @@ XHTML page for Project 4.  -->
   </head>
 
   <body>
-
     <div class="wrapper">
-
       <div id="header">
-        <div id="header-form">
 
-        </div> <!-- End of header-form -->
-        <div id="header-content">
+        <h2>Enter Profile Information</h2>
 
-        </div> <!-- End of header-content -->
+        <form class="header-form" action="index.html" method="post">
 
-        <h2>My Sweet Blog</h2>
+          <p>
+            <label>Name:
+              <input name="name" type="text" size="30" />
+            </label>
+          </p>
 
+          <p>
+            <label>Image:
+              <input name="image" type="file" />
+            </label>
+          </p>
+
+          <p>
+            <label>Description:
+              <textarea name="description"
+                type="textarea" rows="4" cols="30">Enter description here.</textarea>
+            </label>
+          </p>
+
+          <p>
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Clear" />
+          </p>
+
+        </form>
       </div> <!-- End of header -->
 
       <div id="links">
+        <hr />
+        <h2>Add a Link</h2>
 
+        <form class="link-form" action="index.html" method="post">
+
+          <p>
+            <label>
+              <input type="submit" value="Add a Link" />
+              <input name="url" type="text" size="30" />
+            </label>
+
+            <br />
+
+            <label>Link Category:
+              <select name="category">
+                <option>Cats</option>
+                <option>Dogs</option>
+                <option>Fish</option>
+                <option>Music</option>
+                <option>Laptops</option>
+              </select>
+            </p>
+          </label>
+        </form>
 
       </div> <!-- End of links -->
 
       <div id="content-area">
+        <div id="update-content">
+          <hr />
+          <h2>Update Status</h2>
 
+          <form class="status-form" action="index.html" method="post">
+
+            <p>
+              <label>Add Image:
+                <input name="image" type="file" />
+              </label>
+            </p>
+
+            <p>
+              <textarea name="status"
+                type="textarea" rows="4" cols="30">Enter status here.</textarea>
+            </p>
+
+            <p>
+              <label>
+                <input type="submit" value="Add a Link" />
+                <input name="url" type="text" size="30" />
+              </label>
+            </p>
+          </form>
+
+        </div> <!-- End of update-content -->
+
+        <div id="display-content">
+
+
+
+        </div> <!-- End of display-content -->
       </div> <!-- End of content-area -->
 
     </div> <!-- End of wrapper -->
