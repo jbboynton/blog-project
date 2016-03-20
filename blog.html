@@ -45,16 +45,11 @@ XHTML page for Project 4.  -->
 
       <!--
 
-      function testing() {
-        document.getElementById('display-content').innerHTML += "<p>Button works...</p>";
-
-        // document.getElementById('display-content').innerHTML += document.getElementById('profile-description').value;
-      }
-
       /**
+       * updateProfile function
        * If the user has entered info for all three form fields, then the page
        * will update to show the new content.  Otherwise, the user will get a
-       * message to alert them that some fields were left blank.
+       * message to alert them that a field was left blank.
        */
       function updateProfile() {
 
@@ -63,8 +58,12 @@ XHTML page for Project 4.  -->
           if (document.getElementById('profile-image').value !== "") {
             if (document.getElementById('profile-description').value !== "") {
 
-              /* ...then replace this form with the new content. */
-              document.getElementById('header').innerHTML = "<h2>" + document.getElementById('profile-name').value + "</h2><p><img src=\'" + document.getElementById('profile-image').value + "\' alt=\'President image\'></p><p><h4>About me:</h4>" + document.getElementById('profile-description').value + "</p>";
+              /* ...then replace this form with the new content... */
+              document.getElementById('header').innerHTML = "<h2>" +
+                document.getElementById('profile-name').value + "</h2><p><img" +
+                "src=\'" + document.getElementById('profile-image').value +
+                "\' alt=\'President image\'></p><p><h4>About me:</h4>" +
+                document.getElementById('profile-description').value + "</p>";
 
             /* ...else, show an error. */
             } else {
@@ -78,58 +77,134 @@ XHTML page for Project 4.  -->
         }
       }
 
+      /**
+       * addLink function
+       * If the user has entered info for all form fields, then the page will
+       * update to show the new content.  Otherwise, the user will get a
+       * message to alert them that a field was left blank.
+       */
       function addLink() {
+
+        /* If all fields have been completed... */
         if (document.getElementById('link-category').value !== "") {
-          document.getElementById('links-table').innerHTML += "<tr><td>" + document.getElementById('link-category').value + "</td><td><a href=\'" + document.getElementById('link-url').value + "\'>" + document.getElementById('link-url').value + "</a></td></tr>";
+
+          /* ...add the link to the link table... */
+          if (document.getElementById('link-url').value !== "") {
+            document.getElementById('links-table').innerHTML += "<tr><td>" +
+              document.getElementById('link-category').value + "</td><td><a " +
+              "href=\'" + document.getElementById('link-url').value + "\'>" +
+              document.getElementById('link-url').value + "</a></td></tr>";
+          }
+
+        /* ...else, show an error. */
         } else {
           window.alert("Error: Link category can\'t be blank.");
         }
       }
 
+      /**
+       * postImage function
+       * If the user has entered a path to an image, then the page will update
+       * to show the image in the content area.  Otherwise, the user will get a
+       * message to alert them that a field was left blank.
+       */
       function postImage() {
-        var previousContent;
+        var previousContent;    // Holds the value of previous posts to the page
 
+        /* If all fields have been completed... */
         if (document.getElementById('content-image').value !== "") {
+
+          /* ...get the previously posted content, post the new content, and
+            append the old content below the new content... */
           previousContent = document.getElementById('page-posts').innerHTML;
-          document.getElementById('page-posts').innerHTML = "<div class=\'page-post\'><p class=\'date-and-time\'><h4>***CURRENT DATE***</h4><h4>***CURRENT TIME***</h4></p><p class=\'post-image\'><img src=\'" + document.getElementById('content-image').value + "\' alt=\'President image\'></p></div>" + previousContent;
+          document.getElementById('page-posts').innerHTML = "<div " +
+            "class=\'page-post\'><p class=\'date-and-time\'><h4>***CURRENT " +
+            "DATE***</h4><h4>***CURRENT TIME***</h4></p><p " +
+            "class=\'post-image\'><img src=\'" +
+            document.getElementById('content-image').value +
+            "\' alt=\'President image\'></p></div>" + previousContent;
+
+        /* ...else, show an error. */
         } else {
           window.alert("Error: Enter the path of the image you want to post.");
         }
       }
 
+      /**
+       * postStatus function
+       * If the user has entered a status, then the page will update to show the
+       * status in the content area.  Otherwise, the user will get a message to
+       * alert them that a field was left blank.
+       */
       function postStatus() {
-        var previousContent;
+        var previousContent;    // Holds the value of previous posts to the page
 
+        /* If the user has entered a status... */
         if (document.getElementById('content-status').value !== "") {
+
+          /* ...get the previously posted content, post the new content, and
+            append the old content below the new content... */
           previousContent = document.getElementById('page-posts').innerHTML;
-          document.getElementById('page-posts').innerHTML = "<div class=\'page-post\'><p class=\'date-and-time\'><h4>***CURRENT DATE***</h4><h4>***CURRENT TIME***</h4></p><p class=\'post-status\'>" + document.getElementById('content-status').value + "</p></div>" + previousContent;
+          document.getElementById('page-posts').innerHTML = "<div " +
+            "class=\'page-post\'><p class=\'date-and-time\'><h4>***CURRENT " +
+            "DATE***</h4><h4>***CURRENT TIME***</h4></p><p " +
+            "class=\'post-status\'>" +
+            document.getElementById('content-status').value + "</p></div>" +
+            previousContent;
+
+        /* ...else, show an error. */
         } else {
           window.alert("Error: Enter the status you want to post.");
         }
       }
 
+      /**
+       * postLink function
+       * If the user has entered a link, then the page will update to show the
+       * link in the content area.  Otherwise, the user will get a message to
+       * alert them that a field was left blank.
+       */
       function postLink() {
-        var previousContent;
+        var previousContent;    // Holds the value of previous posts to the page
 
+        /* If the user has entered a status... */
         if (document.getElementById('content-url').value !== "") {
+
+          /* ...get the previously posted content, post the new content, and
+            append the old content below the new content... */
           previousContent = document.getElementById('page-posts').innerHTML;
-          document.getElementById('page-posts').innerHTML = "<div class=\'page-post\'><p class=\'date-and-time\'><h4>***CURRENT DATE***</h4><h4>***CURRENT TIME***</h4></p><p class=\'post-link\'><a href src=\'" + document.getElementById('content-url').value + "\'>" + document.getElementById('content-url').value + "</a></p></div>" + previousContent;
+          document.getElementById('page-posts').innerHTML = "<div " +
+            "class=\'page-post\'><p class=\'date-and-time\'><h4>***CURRENT " +
+            "DATE***</h4><h4>***CURRENT TIME***</h4></p><p " +
+            "class=\'post-link\'><a href src=\'" +
+            document.getElementById('content-url').value + "\'>" +
+            document.getElementById('content-url').value + "</a></p></div>" +
+            previousContent;
+
+        /* ...else, show an error. */
         } else {
           window.alert("Error: Enter the link you want to post.");
         }
       }
 
-      // <--
+      // <-- End of JavaScript
     </script>
     <style type="text/css"></style>
   </head>
 
   <body>
     <div class="wrapper">
+
+      <div id="page-title">
+        <h1>My Blog Site</h1>
+      </div>
+
+      <!-- Author's name, image, and a description of the author -->
       <div id="header">
 
         <h2>Enter Profile Information</h2>
 
+        <!-- Form for updating profile info.  All forms must be completed. -->
         <form id="profile-form" action="">
 
           <p>
@@ -159,6 +234,7 @@ XHTML page for Project 4.  -->
         </form>
       </div> <!-- End of header -->
 
+      <!-- Author's links and link categories.  All fields are required. -->
       <div id="links">
         <hr />
         <h2>Add a Link</h2>
@@ -174,8 +250,8 @@ XHTML page for Project 4.  -->
 
             <label>Link Category:
               <select id="link-category">
-                <option></option>
-                <!-- TODO http://stackoverflow.com/questions/6223865/blank-html-select-without-blank-item-in-dropdown-list -->
+                <option style="display: none"></option>
+                <!-- TODO fix style in CSS -->
                 <option>Funny</option>
                 <option>Informative</option>
                 <option>Sobering</option>
@@ -189,6 +265,7 @@ XHTML page for Project 4.  -->
             <input type="button" value="Add Link" onclick="addLink();" />
           </p>
 
+          <!-- TODO figure out better sorting by category -->
           <table summary='This table lists some links of interest.'>
             <tbody id="links-table"></tbody>
           </table>
@@ -196,6 +273,7 @@ XHTML page for Project 4.  -->
         </form>
       </div> <!-- End of links -->
 
+      <!-- Main content of the page.  Posts can be images, statuses (text), or links.  Most recent post appears on top. -->
       <div id="content">
         <div id="update-content">
           <hr />
@@ -224,8 +302,6 @@ XHTML page for Project 4.  -->
           <h2>Display Content</h2>
 
           <div id="page-posts"></div>
-
-
 
         </div> <!-- End of display-content -->
       </div> <!-- End of content-area -->
