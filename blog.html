@@ -220,147 +220,150 @@ XHTML page for Project 4.  This page allows a user to update his or her
   <body>
     <div class="wrapper">
 
-      <div class="clearfix"></div>
-
       <div id="page-title">
-        <h1>MyFace The Blog</h1>
+        <h1>MyFace Blog Site</h1>
       </div>
 
       <div class="clearfix"></div>
+      <div class="main-content">
 
-      <!-- Author's name, image, and a description of the author -->
-      <div id="header">
+        <!-- Author's name, image, and a description of the author -->
+        <div class="content-div" id="header">
 
-        <h2>Enter Profile Information</h2>
+          <h2>Enter Profile Information</h2>
 
-        <!-- Form for updating profile info.  All forms must be completed. -->
-        <form id="profile-form" action="">
-
-          <p>
-            <label>Name:
-              <input class="text" id="profile-name" type="text" size="30" />
-            </label>
-          </p>
-
-          <p>
-            <label>Add an image:
-              <input class="text" id="profile-image" type="text" size="30" />
-            </label>
-          </p>
-
-          <p>
-            <label>Description:
-              <textarea class="text" id="profile-description" type="textarea"
-              rows="4" cols="30"></textarea>
-            </label>
-          </p>
-
-          <p>
-            <label>
-              <input class="btn" type="button" value="Submit"
-                onclick="updateProfile();" />
-            </label>
-            <label>
-              <input class="btn" type="reset" value="Clear" />
-            </label>
-          </p>
-
-        </form>
-      </div> <!-- End of header -->
-
-      <!-- Author's links and link categories.  All fields are required. -->
-      <div id="links">
-        <hr />
-        <h2>Add a Link</h2>
-
-        <form id="link-form" action="">
-
-          <p>
-            <label>Enter a URL:
-              <input class="text" id="link-url" type="text" size="30" />
-            </label>
-
-            <br />
-
-            <label>Link Category:
-              <select id="link-category">
-                <option style="display: none"></option>
-                <!-- TODO fix style in CSS -->
-                <option>Funny</option>
-                <option>Informative</option>
-                <option>Sobering</option>
-                <option>Silly</option>
-                <option>Strange</option>
-              </select>
-            </label>
-          </p>
-
-          <p>
-            <label>
-              <input class="btn" type="button" value="Add Link"
-                onclick="addLink();" />
-            </label>
-          </p>
-
-        </form>
-
-        <!-- TODO figure out better sorting by category -->
-        <table summary='This table lists some links of interest.'>
-          <tbody id="links-table"></tbody>
-        </table>
-
-      </div> <!-- End of links -->
-
-      <!-- Main content of the page.  Posts can be images, statuses (text), or links.  Most recent post appears on top. -->
-      <div id="content">
-        <div id="update-content">
-          <hr />
-          <h2>Update Page</h2>
-
-          <form id="content-form" action="">
+          <!-- Form for updating profile info.  All forms must be completed. -->
+          <form class="form-div" id="profile-form" action="">
 
             <p>
-              <label>
-                <input class="btn" type="button" value="Post Image"
-                  onclick="postImage();" />
+              <label>Name:
+                <input class="text" id="profile-name" type="text" size="100%" />
               </label>
-              <label>
-                <input class="text" id="content-image" type="text" size="30" />
+            </p>
+
+            <p>
+              <label>Add an image:
+                <input class="text" id="profile-image" type="text" size="100%" />
+              </label>
+            </p>
+
+            <p>
+              <label>Description:
+                <textarea class="text" id="profile-description" type="textarea"
+                rows="4" cols="100%"></textarea>
               </label>
             </p>
 
             <p>
               <label>
-                <input class="btn" type="button" value="Post Status"
-                  onclick="postStatus();" />
+                <input class="btn" type="button" value="Submit"
+                  onclick="updateProfile();" />
               </label>
               <label>
-                <textarea class="text" id="content-status"
-                type="textarea" rows="4" cols="30"></textarea>
-              </label>
-            </p>
-
-            <p>
-              <label>
-                <input class="btn" type="button" value="Post Link"
-                  onclick="postLink();" />
-              </label>
-              <label>
-                <input class="text" id="content-url" type="text" size="30" />
+                <input class="btn" type="reset" value="Clear" />
               </label>
             </p>
 
           </form>
-        </div> <!-- End of update-content -->
+        </div> <!-- End of header -->
 
-        <div id="display-content">
-          <hr>
-          <h2>Display Content</h2>
+        <!-- Author's links and link categories.  All fields are required. -->
+        <div class="content-div" id="links">
 
-          <div id="page-posts"></div>
+          <h2>Add a Link</h2>
 
-        </div> <!-- End of display-content -->
-      </div> <!-- End of content-area -->
+          <form class="form-div" id="link-form" action="">
+
+            <p>
+              <label>Enter a URL:
+                <input class="text" id="link-url" type="text"
+                  size="100%" />
+              </label>
+
+              <br />
+
+              <label>Link Category:
+                <select id="link-category">
+                  <option style="display: none"></option>
+                  <!-- TODO fix style in CSS -->
+                  <option>Funny</option>
+                  <option>Informative</option>
+                  <option>Sobering</option>
+                  <option>Silly</option>
+                  <option>Strange</option>
+                </select>
+              </label>
+            </p>
+
+            <p>
+              <label>
+                <input class="btn" type="button" value="Add Link"
+                  onclick="addLink();" />
+              </label>
+            </p>
+
+          </form>
+
+          <!-- TODO figure out better sorting by category -->
+          <table summary='This table lists some links of interest.'>
+            <tbody id="links-table"></tbody>
+          </table>
+
+        </div> <!-- End of links -->
+
+        <!-- Main content of the page.  Posts can be images, statuses
+          (text), or links.  Most recent post appears on top. -->
+        <div id="content">
+          <div class="content-div" id="update-content">
+            <h2>Update Page</h2>
+
+            <form class="form-div" id="content-form" action="">
+
+              <p>
+                <label>
+                  <input class="btn" type="button" value="Post Image"
+                    onclick="postImage();" />
+                </label>
+                <label>
+                  <input class="text" id="content-image" type="text"
+                    size="100%" />
+                </label>
+              </p>
+
+              <p>
+                <label>
+                  <input class="btn" type="button" value="Post Status"
+                    onclick="postStatus();" />
+                </label>
+                <label>
+                  <textarea class="text" id="content-status"
+                  type="textarea" rows="4" cols="100%"></textarea>
+                </label>
+              </p>
+
+              <p>
+                <label>
+                  <input class="btn" type="button" value="Post Link"
+                    onclick="postLink();" />
+                </label>
+                <label>
+                  <input class="text" id="content-url" type="text" size="100%" />
+                </label>
+              </p>
+
+            </form>
+          </div> <!-- End of update-content -->
+
+          <div class="content-div" id="display-content">
+            
+            <h2>Display Content</h2>
+
+            <div id="page-posts"></div>
+
+          </div> <!-- End of display-content -->
+        </div> <!-- End of content-area -->
+
+      </div> <!-- End of main-content -->
 
     </div> <!-- End of wrapper -->
   </body>
