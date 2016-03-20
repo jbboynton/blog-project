@@ -45,20 +45,28 @@ XHTML page for Project 4.  -->
 
       <!--
 
-      /* TODO Script body */
       function testing() {
         document.getElementById('display-content').innerHTML += "<p>Button works...</p>";
 
         // document.getElementById('display-content').innerHTML += document.getElementById('profile-description').value;
       }
 
+      /**
+       * If the user has entered info for all three form fields, then the page
+       * will update to show the new content.  Otherwise, the user will get a
+       * message to alert them that some fields were left blank.
+       */
       function updateProfile() {
 
+        /* If all fields have been completed... */
         if (document.getElementById('profile-name').value !== "") {
           if (document.getElementById('profile-image').value !== "") {
             if (document.getElementById('profile-description').value !== "") {
+
+              /* ...then replace this form with the new content. */
               document.getElementById('header').innerHTML = "<h2>" + document.getElementById('profile-name').value + "</h2><p><img src=\'" + document.getElementById('profile-image').value + "\' alt=\'President image\'</p><p><h4>About me:</h4><br>" + document.getElementById('profile-description').value + "</p>";
 
+            /* ...else, show an error. */
             } else {
               window.alert("Error: Profile description can\'t be blank.");
             }
@@ -67,6 +75,14 @@ XHTML page for Project 4.  -->
           }
         } else {
           window.alert("Error: Profile name can\'t be blank.");
+        }
+      }
+
+      function addLink() {
+        if (document.getElementById('link-category').value !== "") {
+          document.getElementById('links-table').innerHTML += "<tr><td>" + document.getElementById('link-category').value + "</td><td><a href=\'" + document.getElementById('link-url').value + "\'>" + document.getElementById('link-url').value + "</a></td></tr>";
+        } else {
+          window.alert("Error: Link category can\'t be blank.");
         }
 
       }
@@ -138,8 +154,12 @@ XHTML page for Project 4.  -->
           </p>
 
           <p>
-            <input type="button" value="Add Link" onclick="testing();" />
+            <input type="button" value="Add Link" onclick="addLink();" />
           </p>
+
+          <table summary='This table lists some links of interest.'>
+            <tbody id="links-table"></tbody>
+          </table>
 
         </form>
       </div> <!-- End of links -->
