@@ -11,30 +11,30 @@ html {
     background-image: url('background.jpg');
     background-repeat: no-repeat;
     background-color: #000000;
+    width: 768px;
 }
 
 body {
+  color: #FFFFFF;
   font-family: 'Ubuntu', 'Consolas', 'Georgia', sans-serif;
-  margin: 6% auto;
-  width: 810px;
 }
 
 h1 {
-  font-size: 500%;
-  color: #335B6B;
+  color: #A6FF00;
   font-family: 'Unica One', 'Consolas', 'Georgia', sans-serif;
+  font-size: 4.2em;
+  text-shadow: 0.1px 0.1px 13px #AFFFAF;
 }
 
 h2 {
-  color: yellow;
+  color: #A6FF00;
 }
 
-a {
-  color: #3A6678;
-}
-
-a:hover {
-  color: #649EB4;
+input {
+  background-color: #000000;
+  border-style: none;
+  color: #1962FF;
+  font-family: 'Ubuntu', 'Consolas', 'Georgia', sans-serif;
 }
 
 table {
@@ -50,6 +50,63 @@ td {
   padding-left: 1%;
 }
 
+a {
+  color: #B22509;
+}
+
+a:hover {
+  color: #CC3314;
+}
+
+a:active {
+  color: #E30F0B;
+}
+
+a:visited {
+  color: #D9690B;
+}
+
 .wrapper {
-  padding: 4%;
+  overflow: auto;
+  padding-left: 45%;
+}
+
+/*.clearfix {
+
+}*/
+
+.text {
+  border-bottom: solid 0.1em #CC3314;
+}
+
+.text:focus {
+  border-bottom: solid 0.2em #CC3314;
+  outline: none;
+}
+
+.btn {
+  border-radius: 10%;
+  border: solid 0.1em #CC3314;
+}
+
+.btn:hover {
+  border: solid 0.2em #CC3314;
+}
+
+.btn:active {
+  border-color: #E30F0B;
+}
+
+.btn:focus {
+  border: solid 0.2em #CC3314;
+  outline: none;
+}
+
+#page-title {
+  text-align: right;
+  width: 80%;
+}
+
+#header {
+  padding-top: 50%
 }

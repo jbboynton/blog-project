@@ -201,9 +201,8 @@ XHTML page for Project 4.  This page allows a user to update his or her
             append the old content below the new content... */
           previousContent = document.getElementById('page-posts').innerHTML;
           document.getElementById('page-posts').innerHTML = "<div " +
-            "class=\'page-post\'><p class=\'date-and-time\'><h4>***CURRENT " +
-            "DATE***</h4><h4>***CURRENT TIME***</h4></p><p " +
-            "class=\'post-link\'><a href src=\'" +
+            "class=\'page-post\'><p class=\'date-and-time\'><h4>" + now() +
+            "</h4></p><p " + "class=\'post-link\'><a href src=\'" +
             document.getElementById('content-url').value + "\'>" +
             document.getElementById('content-url').value + "</a></p></div>" +
             previousContent;
@@ -224,9 +223,9 @@ XHTML page for Project 4.  This page allows a user to update his or her
       <div class="clearfix"></div>
 
       <div id="page-title">
-        <h1>My Blog Site</h1>
+        <h1>MyFace The Blog</h1>
       </div>
-      
+
       <div class="clearfix"></div>
 
       <!-- Author's name, image, and a description of the author -->
@@ -239,27 +238,30 @@ XHTML page for Project 4.  This page allows a user to update his or her
 
           <p>
             <label>Name:
-              <input id="profile-name" type="text" size="30" />
+              <input class="text" id="profile-name" type="text" size="30" />
             </label>
           </p>
 
           <p>
             <label>Add an image:
-              <input id="profile-image" type="text" size="30" />
+              <input class="text" id="profile-image" type="text" size="30" />
             </label>
           </p>
 
           <p>
             <label>Description:
-              <textarea id="profile-description"
-                type="textarea" rows="4" cols="30"></textarea>
+              <textarea class="text" id="profile-description" type="textarea"
+              rows="4" cols="30"></textarea>
             </label>
           </p>
 
           <p>
             <label>
-              <input type="button" value="Submit" onclick="updateProfile();" />
-              <input type="reset" value="Clear" />
+              <input class="btn" type="button" value="Submit"
+                onclick="updateProfile();" />
+            </label>
+            <label>
+              <input class="btn" type="reset" value="Clear" />
             </label>
           </p>
 
@@ -275,7 +277,7 @@ XHTML page for Project 4.  This page allows a user to update his or her
 
           <p>
             <label>Enter a URL:
-              <input id="link-url" type="text" size="30" />
+              <input class="text" id="link-url" type="text" size="30" />
             </label>
 
             <br />
@@ -295,7 +297,8 @@ XHTML page for Project 4.  This page allows a user to update his or her
 
           <p>
             <label>
-              <input type="button" value="Add Link" onclick="addLink();" />
+              <input class="btn" type="button" value="Add Link"
+                onclick="addLink();" />
             </label>
           </p>
 
@@ -318,25 +321,32 @@ XHTML page for Project 4.  This page allows a user to update his or her
 
             <p>
               <label>
-                <input type="button" value="Post Image"
+                <input class="btn" type="button" value="Post Image"
                   onclick="postImage();" />
-                <input id="content-image" type="text" size="30" />
+              </label>
+              <label>
+                <input class="text" id="content-image" type="text" size="30" />
               </label>
             </p>
 
             <p>
               <label>
-                <input type="button" value="Post Status"
+                <input class="btn" type="button" value="Post Status"
                   onclick="postStatus();" />
-                <textarea id="content-status"
+              </label>
+              <label>
+                <textarea class="text" id="content-status"
                 type="textarea" rows="4" cols="30"></textarea>
               </label>
             </p>
 
             <p>
               <label>
-                <input type="button" value="Post Link" onclick="postLink();" />
-                <input id="content-url" type="text" size="30" />
+                <input class="btn" type="button" value="Post Link"
+                  onclick="postLink();" />
+              </label>
+              <label>
+                <input class="text" id="content-url" type="text" size="30" />
               </label>
             </p>
 
