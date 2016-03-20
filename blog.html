@@ -8,11 +8,22 @@ Project 2
 
 blog.html
 
-XHTML page for Project 4.  -->
+XHTML page for Project 4.  This page allows a user to update his or her
+  profile.  The user can update their personal info and their links of interest.
+  They can also post content to their page.  Posts can be images, statuses, or
+  links. -->
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>Project 4</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <!-- Import Google fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'
+      type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Unica+One'
+      rel='stylesheet' type='text/css'>
+
     <script type="text/javascript">
 
       /* Outline
@@ -60,8 +71,8 @@ XHTML page for Project 4.  -->
 
               /* ...then replace this form with the new content... */
               document.getElementById('header').innerHTML = "<h2>" +
-                document.getElementById('profile-name').value + "</h2><p><img" +
-                "src=\'" + document.getElementById('profile-image').value +
+                document.getElementById('profile-name').value + "</h2><p>" +
+                "<img src=\'" + document.getElementById('profile-image').value +
                 "\' alt=\'President image\'></p><p><h4>About me:</h4>" +
                 document.getElementById('profile-description').value + "</p>";
 
@@ -87,19 +98,37 @@ XHTML page for Project 4.  -->
 
         /* If all fields have been completed... */
         if (document.getElementById('link-category').value !== "") {
-
-          /* ...add the link to the link table... */
           if (document.getElementById('link-url').value !== "") {
+
+            /* ...add the link to the link table... */
             document.getElementById('links-table').innerHTML += "<tr><td>" +
               document.getElementById('link-category').value + "</td><td><a " +
               "href=\'" + document.getElementById('link-url').value + "\'>" +
               document.getElementById('link-url').value + "</a></td></tr>";
-          }
 
-        /* ...else, show an error. */
+          /* ...else, show an error. */
+          } else {
+            window.alert("Error: Enter the URL you want to post.");
+          }
         } else {
           window.alert("Error: Link category can\'t be blank.");
         }
+      }
+
+      /**
+       * now function
+       * Creates a new Date object, and uses it to make a formatted string that
+       * contains the current date and time.
+       */
+      function now() {
+        var currentTimeArray = new Date().toString().split(' ');
+
+        var now = currentTimeArray[1].toString() + ". " +
+          currentTimeArray[2].toString() + ", " +
+          currentTimeArray[3].toString() + " at " +
+          currentTimeArray[4].toString() + ":";
+
+        return now;
       }
 
       /**
@@ -118,9 +147,8 @@ XHTML page for Project 4.  -->
             append the old content below the new content... */
           previousContent = document.getElementById('page-posts').innerHTML;
           document.getElementById('page-posts').innerHTML = "<div " +
-            "class=\'page-post\'><p class=\'date-and-time\'><h4>***CURRENT " +
-            "DATE***</h4><h4>***CURRENT TIME***</h4></p><p " +
-            "class=\'post-image\'><img src=\'" +
+            "class=\'page-post\'><p class=\'date-and-time\'><h4>" + now() +
+            "</h4></p><p class=\'post-image\'><img src=\'" +
             document.getElementById('content-image').value +
             "\' alt=\'President image\'></p></div>" + previousContent;
 
@@ -146,9 +174,8 @@ XHTML page for Project 4.  -->
             append the old content below the new content... */
           previousContent = document.getElementById('page-posts').innerHTML;
           document.getElementById('page-posts').innerHTML = "<div " +
-            "class=\'page-post\'><p class=\'date-and-time\'><h4>***CURRENT " +
-            "DATE***</h4><h4>***CURRENT TIME***</h4></p><p " +
-            "class=\'post-status\'>" +
+            "class=\'page-post\'><p class=\'date-and-time\'><h4>" + now() +
+            "</h4></p><p class=\'post-status\'>" +
             document.getElementById('content-status').value + "</p></div>" +
             previousContent;
 
@@ -189,15 +216,18 @@ XHTML page for Project 4.  -->
 
       // <-- End of JavaScript
     </script>
-    <style type="text/css"></style>
   </head>
 
   <body>
     <div class="wrapper">
 
+      <div class="clearfix"></div>
+
       <div id="page-title">
         <h1>My Blog Site</h1>
       </div>
+      
+      <div class="clearfix"></div>
 
       <!-- Author's name, image, and a description of the author -->
       <div id="header">
@@ -227,8 +257,10 @@ XHTML page for Project 4.  -->
           </p>
 
           <p>
-            <input type="button" value="Submit" onclick="updateProfile();" />
-            <input type="reset" value="Clear" />
+            <label>
+              <input type="button" value="Submit" onclick="updateProfile();" />
+              <input type="reset" value="Clear" />
+            </label>
           </p>
 
         </form>
@@ -262,15 +294,18 @@ XHTML page for Project 4.  -->
           </p>
 
           <p>
-            <input type="button" value="Add Link" onclick="addLink();" />
+            <label>
+              <input type="button" value="Add Link" onclick="addLink();" />
+            </label>
           </p>
 
-          <!-- TODO figure out better sorting by category -->
-          <table summary='This table lists some links of interest.'>
-            <tbody id="links-table"></tbody>
-          </table>
-
         </form>
+
+        <!-- TODO figure out better sorting by category -->
+        <table summary='This table lists some links of interest.'>
+          <tbody id="links-table"></tbody>
+        </table>
+
       </div> <!-- End of links -->
 
       <!-- Main content of the page.  Posts can be images, statuses (text), or links.  Most recent post appears on top. -->
@@ -279,22 +314,33 @@ XHTML page for Project 4.  -->
           <hr />
           <h2>Update Page</h2>
 
-          <p>
-            <input type="button" value="Post Image" onclick="postImage();" />
-            <input id="content-image" type="text" size="30" />
-          </p>
+          <form id="content-form" action="">
 
-          <p>
-            <input type="button" value="Post Status" onclick="postStatus();" />
-            <textarea id="content-status"
-              type="textarea" rows="4" cols="30"></textarea>
-          </p>
+            <p>
+              <label>
+                <input type="button" value="Post Image"
+                  onclick="postImage();" />
+                <input id="content-image" type="text" size="30" />
+              </label>
+            </p>
 
-          <p>
-            <input type="button" value="Post Link" onclick="postLink();" />
-            <input id="content-url" type="text" size="30" />
-          </p>
+            <p>
+              <label>
+                <input type="button" value="Post Status"
+                  onclick="postStatus();" />
+                <textarea id="content-status"
+                type="textarea" rows="4" cols="30"></textarea>
+              </label>
+            </p>
 
+            <p>
+              <label>
+                <input type="button" value="Post Link" onclick="postLink();" />
+                <input id="content-url" type="text" size="30" />
+              </label>
+            </p>
+
+          </form>
         </div> <!-- End of update-content -->
 
         <div id="display-content">

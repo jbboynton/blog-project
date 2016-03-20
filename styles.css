@@ -1,0 +1,55 @@
+/* James Boynton
+3/20/16
+COMI 2010 Client-Side Scripting Languages
+Project 2
+
+styles.css
+
+External stylesheet referenced by blog.html. */
+
+html {
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-color: #000000;
+}
+
+body {
+  font-family: 'Ubuntu', 'Consolas', 'Georgia', sans-serif;
+  margin: 6% auto;
+  width: 810px;
+}
+
+h1 {
+  font-size: 500%;
+  color: #335B6B;
+  font-family: 'Unica One', 'Consolas', 'Georgia', sans-serif;
+}
+
+h2 {
+  color: yellow;
+}
+
+a {
+  color: #3A6678;
+}
+
+a:hover {
+  color: #649EB4;
+}
+
+table {
+  width: 100%
+}
+
+table, td {
+  border-style: none;
+}
+
+td {
+  height: 1.4em;
+  padding-left: 1%;
+}
+
+.wrapper {
+  padding: 4%;
+}
