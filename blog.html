@@ -64,7 +64,7 @@ XHTML page for Project 4.  -->
             if (document.getElementById('profile-description').value !== "") {
 
               /* ...then replace this form with the new content. */
-              document.getElementById('header').innerHTML = "<h2>" + document.getElementById('profile-name').value + "</h2><p><img src=\'" + document.getElementById('profile-image').value + "\' alt=\'President image\'</p><p><h4>About me:</h4><br>" + document.getElementById('profile-description').value + "</p>";
+              document.getElementById('header').innerHTML = "<h2>" + document.getElementById('profile-name').value + "</h2><p><img src=\'" + document.getElementById('profile-image').value + "\' alt=\'President image\'></p><p><h4>About me:</h4>" + document.getElementById('profile-description').value + "</p>";
 
             /* ...else, show an error. */
             } else {
@@ -84,7 +84,39 @@ XHTML page for Project 4.  -->
         } else {
           window.alert("Error: Link category can\'t be blank.");
         }
+      }
 
+      function postImage() {
+        var previousContent;
+
+        if (document.getElementById('content-image').value !== "") {
+          previousContent = document.getElementById('page-posts').innerHTML;
+          document.getElementById('page-posts').innerHTML = "<div class=\'page-post\'><p class=\'date-and-time\'><h4>***CURRENT DATE***</h4><h4>***CURRENT TIME***</h4></p><p class=\'post-image\'><img src=\'" + document.getElementById('content-image').value + "\' alt=\'President image\'></p></div>" + previousContent;
+        } else {
+          window.alert("Error: Enter the path of the image you want to post.");
+        }
+      }
+
+      function postStatus() {
+        var previousContent;
+
+        if (document.getElementById('content-status').value !== "") {
+          previousContent = document.getElementById('page-posts').innerHTML;
+          document.getElementById('page-posts').innerHTML = "<div class=\'page-post\'><p class=\'date-and-time\'><h4>***CURRENT DATE***</h4><h4>***CURRENT TIME***</h4></p><p class=\'post-status\'>" + document.getElementById('content-status').value + "</p></div>" + previousContent;
+        } else {
+          window.alert("Error: Enter the status you want to post.");
+        }
+      }
+
+      function postLink() {
+        var previousContent;
+
+        if (document.getElementById('content-url').value !== "") {
+          previousContent = document.getElementById('page-posts').innerHTML;
+          document.getElementById('page-posts').innerHTML = "<div class=\'page-post\'><p class=\'date-and-time\'><h4>***CURRENT DATE***</h4><h4>***CURRENT TIME***</h4></p><p class=\'post-link\'><a href src=\'" + document.getElementById('content-url').value + "\'>" + document.getElementById('content-url').value + "</a></p></div>" + previousContent;
+        } else {
+          window.alert("Error: Enter the link you want to post.");
+        }
       }
 
       // <--
@@ -164,41 +196,34 @@ XHTML page for Project 4.  -->
         </form>
       </div> <!-- End of links -->
 
-      <div id="content-area">
+      <div id="content">
         <div id="update-content">
           <hr />
           <h2>Update Page</h2>
 
-          <!-- <form id="update-form" action=""> -->
-
           <p>
-            <!-- <label>Add Image: -->
-            <input type="button" value="Add Image" onclick="testing();" />
+            <input type="button" value="Post Image" onclick="postImage();" />
             <input id="content-image" type="text" size="30" />
-            <!-- </label> -->
           </p>
 
           <p>
-            <!-- <label> -->
-            <input type="button" value="Add Status" onclick="testing();" />
+            <input type="button" value="Post Status" onclick="postStatus();" />
             <textarea id="content-status"
               type="textarea" rows="4" cols="30"></textarea>
-            <!-- </label> -->
           </p>
 
           <p>
-            <!-- <label> -->
-            <input type="button" value="Add Link" onclick="testing();" />
+            <input type="button" value="Post Link" onclick="postLink();" />
             <input id="content-url" type="text" size="30" />
-            <!-- </label> -->
           </p>
-          <!-- </form> -->
 
         </div> <!-- End of update-content -->
 
         <div id="display-content">
           <hr>
           <h2>Display Content</h2>
+
+          <div id="page-posts"></div>
 
 
 
