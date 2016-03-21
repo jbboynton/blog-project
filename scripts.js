@@ -14,7 +14,7 @@ JavaScript for Project 4. */
  * message to alert them that a field was left blank.
  */
 function updateProfile() {
-  
+
   var name = document.getElementById('profile-name').value;
   var imagePath = document.getElementById('profile-image').value;
   var description = document.getElementById('profile-description').value;
@@ -26,8 +26,9 @@ function updateProfile() {
 
         /* ...then replace this form with the new content... */
         document.getElementById('header').innerHTML = "<h2>" + name +
-          "</h2><p><img src=\'" + imagePath + "\' alt=\'President " +
-            "image\'></p><p><h4>About me:</h4>" + description + "</p>";
+          "</h2><p><img class=\'profile-pic\' src=\'" + imagePath +
+          "\' alt=\'President " + "image\'></p><p><h4>About me:</h4>" +
+          description + "</p>";
 
       /* ...else, show an error. */
       } else {
@@ -114,28 +115,40 @@ function appendLinks() {
   /* The list to which the new list item will be appended. */
   var list;
 
-  /* Create the link to the user's URL. */
-  link.textContent = url;
-  link.setAttribute('href', url);
+  /* If all required fields have been filled out... */
+  if (linkCategory !== "") {
+    if (url !== "") {
 
-  /* Determine the list to be appended by category. */
-  if (linkCategory == "Funny") {
-    list = document.getElementById("funny-links-list");
-  } else if (linkCategory == "Informative") {
-    list = document.getElementById("informative-links-list");
-  } else if (linkCategory == "Silly") {
-    list = document.getElementById("silly-links-list");
-  } else if (linkCategory == "Sobering") {
-    list = document.getElementById("sobering-links-list");
-  } else if (linkCategory == "Strange") {
-    list = document.getElementById("strange-links-list");
+      /* Create the link to the user's URL. */
+      link.textContent = url;
+      link.setAttribute('href', url);
+
+      /* Determine the list to be appended by category. */
+      if (linkCategory == "Funny") {
+        list = document.getElementById("funny-links-list");
+      } else if (linkCategory == "Informative") {
+        list = document.getElementById("informative-links-list");
+      } else if (linkCategory == "Silly") {
+        list = document.getElementById("silly-links-list");
+      } else if (linkCategory == "Sobering") {
+        list = document.getElementById("sobering-links-list");
+      } else if (linkCategory == "Strange") {
+        list = document.getElementById("strange-links-list");
+      } else {
+        window.alert("Error: invalid selection.");
+      }
+
+      /* Append the link to the list item, and the list item to the list. */
+      listItem.appendChild(link);
+      list.appendChild(listItem);
+
+    /* ...else, show an error. */
+    } else {
+      window.alert("Error: Enter the URL you want to post.");
+    }
   } else {
-    window.alert("Error: invalid selection.");
+    window.alert("Error: Link category can\'t be blank.");
   }
-
-  /* Append the link to the list item, and the list item to the list. */
-  listItem.appendChild(link);
-  list.appendChild(listItem);
 }
 
 /**

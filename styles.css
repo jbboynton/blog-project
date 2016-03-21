@@ -8,10 +8,10 @@ styles.css
 External stylesheet referenced by blog.html. */
 
 html {
-    background-image: url('background.jpg');
-    background-repeat: no-repeat;
-    background-color: #000000;
-    width: 1024px;
+  background-color: #000000;
+  background-image: url('background.jpg');
+  background-repeat: no-repeat;
+  width: 1024px;
 }
 
 body {
@@ -39,37 +39,23 @@ h4 {
 
 textarea {
   background-color: #182418;
-  border: solid 0.1em #CC3314;
+  border: solid 0.2em #CC3314;
   color: #FFFFFF;
   font-family: 'Consolas', 'Georgia', sans-serif;
-  max-width: 99%;
+  max-width: 98%;
   resize: none;
 }
 
 textarea:focus {
-  border-top: solid 0.2em #CC3314;
-  border-bottom: solid 0.2em #CC3314;
+  border-color: #E30F0B;
   outline: none;
 }
 
 input {
   background-color: #182418;
   border-style: none;
-  color: #1962FF;
+  color: #FFFFFF;
   font-family: 'Ubuntu', 'Consolas', 'Georgia', sans-serif;
-}
-
-table {
-  width: 100%
-}
-
-table, td {
-  border-style: none;
-}
-
-td {
-  height: 1.4em;
-  padding-left: 1%;
 }
 
 a {
@@ -116,35 +102,41 @@ a:visited {
 }
 
 .image-options {
-  text-align: center;
+  font-size: 0.8em;
 }
 
 .text {
-  border-bottom: solid 0.1em #CC3314;
+  border-bottom: solid 0.2em #CC3314;
 }
 
 .text:focus {
-  border-bottom: solid 0.2em #CC3314;
+  border-color: #E30F0B;
   outline: none;
 }
 
 .btn {
   background-color: #0C120C;
   border-radius: 10%;
-  border: solid 0.1em #CC3314;
+  border: solid 0.2em #CC3314;
 }
 
 .btn:hover {
-  border: solid 0.2em #CC3314;
-}
-
-.btn:active {
   border-color: #E30F0B;
 }
 
+.btn:active {
+  border-color: #0C120C;
+}
+
 .btn:focus {
-  border: solid 0.2em #CC3314;
+  border-color: #E30F0B;
   outline: none;
+}
+
+.profile-pic {
+  box-shadow: 0.1px 0.1px 15px #AFFFAF;
+  display: block;
+  margin: 0 auto;
 }
 
 .link-dropdown {
@@ -153,9 +145,12 @@ a:visited {
 }
 
 .link-dropdown:focus {
-  border-top: solid 0.2em #CC3314;
-  border-bottom: solid 0.2em #CC3314;
+  border-color: #E30F0B;
   outline: none;
+}
+
+.link-lists {
+  padding-left: 2%;
 }
 
 .hide {
@@ -165,8 +160,8 @@ a:visited {
 .page-post {
   background-color: #0C120C;
   border: solid 0.1em #AFFFAF;
+  margin: 6%;
   max-width: 100%;
-  margin: 3%;
   overflow: hidden;
   padding: 3%;
 }
