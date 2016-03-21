@@ -22,205 +22,14 @@ XHTML page for Project 4.  This page allows a user to update his or her
     <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'
       type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Unica+One'
-      rel='stylesheet' type='text/css'>
-
-    <script type="text/javascript">
-
-      /* Outline
-
-      I.  section for profile
-        1)  header
-        2)  form elements to let the user enter:
-          a)  name
-          b)  image file name
-          c)  text description
-        3)  clear button
-        4)  submit button
-
-      II.  section for links
-        1)  categories determined by me
-        2)  area to enter a url
-        3)  pull down menu for choosing the link category
-        4)  add button
-
-      III.  section for entering content
-        1)  status update with three buttons:
-          a)  button for uploading an image
-          b)  button for a status (text box)
-          c)  button for a link
-        2)  Image, status or link is displayed in main content area (below)
-
-      IV.  section for posting content
-        1)  main content goes here
-        2)  most recent post goes at the top */
-
-      <!--
-
-      /**
-       * updateProfile function
-       * If the user has entered info for all three form fields, then the page
-       * will update to show the new content.  Otherwise, the user will get a
-       * message to alert them that a field was left blank.
-       */
-      function updateProfile() {
-
-        /* If all fields have been completed... */
-        if (document.getElementById('profile-name').value !== "") {
-          if (document.getElementById('profile-image').value !== "") {
-            if (document.getElementById('profile-description').value !== "") {
-
-              /* ...then replace this form with the new content... */
-              document.getElementById('header').innerHTML = "<h2>" +
-                document.getElementById('profile-name').value + "</h2><p>" +
-                "<img src=\'" + document.getElementById('profile-image').value +
-                "\' alt=\'President image\'></p><p><h4>About me:</h4>" +
-                document.getElementById('profile-description').value + "</p>";
-
-            /* ...else, show an error. */
-            } else {
-              window.alert("Error: Profile description can\'t be blank.");
-            }
-          } else {
-            window.alert("Error: Profile image can\'t be blank.");
-          }
-        } else {
-          window.alert("Error: Profile name can\'t be blank.");
-        }
-      }
-
-      /**
-       * addLink function
-       * If the user has entered info for all form fields, then the page will
-       * update to show the new content.  Otherwise, the user will get a
-       * message to alert them that a field was left blank.
-       */
-      function addLink() {
-
-        /* If all fields have been completed... */
-        if (document.getElementById('link-category').value !== "") {
-          if (document.getElementById('link-url').value !== "") {
-
-            /* ...add the link to the link table... */
-            document.getElementById('links-table').innerHTML += "<tr><td>" +
-              document.getElementById('link-category').value + "</td><td><a " +
-              "href=\'" + document.getElementById('link-url').value + "\'>" +
-              document.getElementById('link-url').value + "</a></td></tr>";
-
-          /* ...else, show an error. */
-          } else {
-            window.alert("Error: Enter the URL you want to post.");
-          }
-        } else {
-          window.alert("Error: Link category can\'t be blank.");
-        }
-      }
-
-      /**
-       * now function
-       * Creates a new Date object, and uses it to make a formatted string that
-       * contains the current date and time.
-       */
-      function now() {
-        var currentTimeArray = new Date().toString().split(' ');
-
-        var now = currentTimeArray[1].toString() + ". " +
-          currentTimeArray[2].toString() + ", " +
-          currentTimeArray[3].toString() + " at " +
-          currentTimeArray[4].toString() + ":";
-
-        return now;
-      }
-
-      /**
-       * postImage function
-       * If the user has entered a path to an image, then the page will update
-       * to show the image in the content area.  Otherwise, the user will get a
-       * message to alert them that a field was left blank.
-       */
-      function postImage() {
-        var previousContent;    // Holds the value of previous posts to the page
-
-        /* If all fields have been completed... */
-        if (document.getElementById('content-image').value !== "") {
-
-          /* ...get the previously posted content, post the new content, and
-            append the old content below the new content... */
-          previousContent = document.getElementById('page-posts').innerHTML;
-          document.getElementById('page-posts').innerHTML = "<div " +
-            "class=\'page-post\'><p class=\'date-and-time\'><h4>" + now() +
-            "</h4></p><p class=\'post-image\'><img src=\'" +
-            document.getElementById('content-image').value +
-            "\' alt=\'President image\'></p></div>" + previousContent;
-
-        /* ...else, show an error. */
-        } else {
-          window.alert("Error: Enter the path of the image you want to post.");
-        }
-      }
-
-      /**
-       * postStatus function
-       * If the user has entered a status, then the page will update to show the
-       * status in the content area.  Otherwise, the user will get a message to
-       * alert them that a field was left blank.
-       */
-      function postStatus() {
-        var previousContent;    // Holds the value of previous posts to the page
-
-        /* If the user has entered a status... */
-        if (document.getElementById('content-status').value !== "") {
-
-          /* ...get the previously posted content, post the new content, and
-            append the old content below the new content... */
-          previousContent = document.getElementById('page-posts').innerHTML;
-          document.getElementById('page-posts').innerHTML = "<div " +
-            "class=\'page-post\'><p class=\'date-and-time\'><h4>" + now() +
-            "</h4></p><p class=\'post-status\'>" +
-            document.getElementById('content-status').value + "</p></div>" +
-            previousContent;
-
-        /* ...else, show an error. */
-        } else {
-          window.alert("Error: Enter the status you want to post.");
-        }
-      }
-
-      /**
-       * postLink function
-       * If the user has entered a link, then the page will update to show the
-       * link in the content area.  Otherwise, the user will get a message to
-       * alert them that a field was left blank.
-       */
-      function postLink() {
-        var previousContent;    // Holds the value of previous posts to the page
-
-        /* If the user has entered a status... */
-        if (document.getElementById('content-url').value !== "") {
-
-          /* ...get the previously posted content, post the new content, and
-            append the old content below the new content... */
-          previousContent = document.getElementById('page-posts').innerHTML;
-          document.getElementById('page-posts').innerHTML = "<div " +
-            "class=\'page-post\'><p class=\'date-and-time\'><h4>" + now() +
-            "</h4></p><p " + "class=\'post-link\'><a href src=\'" +
-            document.getElementById('content-url').value + "\'>" +
-            document.getElementById('content-url').value + "</a></p></div>" +
-            previousContent;
-
-        /* ...else, show an error. */
-        } else {
-          window.alert("Error: Enter the link you want to post.");
-        }
-      }
-
-      // <-- End of JavaScript
-    </script>
+      rel='stylesheet' type='text/css' />
+    <script type="text/javascript" src="scripts.js"></script>
   </head>
 
   <body>
     <div class="wrapper">
 
-      <div id="page-title">
+      <div class="page-title">
         <h1>MyFace Blog Site</h1>
       </div>
 
@@ -229,7 +38,6 @@ XHTML page for Project 4.  This page allows a user to update his or her
 
         <!-- Author's name, image, and a description of the author -->
         <div class="content-div" id="header">
-
           <h2>Enter Profile Information</h2>
 
           <!-- Form for updating profile info.  All forms must be completed. -->
@@ -243,14 +51,20 @@ XHTML page for Project 4.  This page allows a user to update his or her
 
             <p>
               <label>Add an image:
-                <input class="text" id="profile-image" type="text" size="100%" />
+                <input class="text" id="profile-image" type="text"
+                  size="100%" />
+                <br /><br />
+                <strong><em><small>Available images:</small></em></strong>
+                <br /><em><small>benjamin-harrison.jpg</small></em>
+                <br /><em><small>james-buchanan.jpg</small></em>
+                <br /><em><small>martin-van-buren.jpg</small></em><br /><br />
               </label>
             </p>
 
             <p>
               <label>Description:
-                <textarea class="text" id="profile-description" type="textarea"
-                rows="4" cols="100%"></textarea>
+                <textarea class="text" id="profile-description" rows="4"
+                  cols="100%"></textarea>
               </label>
             </p>
 
@@ -269,27 +83,25 @@ XHTML page for Project 4.  This page allows a user to update his or her
 
         <!-- Author's links and link categories.  All fields are required. -->
         <div class="content-div" id="links">
-
           <h2>Add a Link</h2>
 
           <form class="form-div" id="link-form" action="">
 
             <p>
               <label>Enter a URL:
-                <input class="text" id="link-url" type="text"
-                  size="100%" />
+                <input class="text" id="link-url" type="text" size="100%" />
               </label>
+            </p>
 
-              <br />
-
+            <p>
               <label>Link Category:
-                <select id="link-category">
-                  <option style="display: none"></option>
-                  <!-- TODO fix style in CSS -->
+                <br /><br />
+                <select class="link-dropdown" id="link-category">
+                  <option class="hide"></option>
                   <option>Funny</option>
                   <option>Informative</option>
-                  <option>Sobering</option>
                   <option>Silly</option>
+                  <option>Sobering</option>
                   <option>Strange</option>
                 </select>
               </label>
@@ -298,16 +110,43 @@ XHTML page for Project 4.  This page allows a user to update his or her
             <p>
               <label>
                 <input class="btn" type="button" value="Add Link"
-                  onclick="addLink();" />
+                  onclick="appendLinks();" />
               </label>
             </p>
 
           </form>
 
-          <!-- TODO figure out better sorting by category -->
-          <table summary='This table lists some links of interest.'>
-            <tbody id="links-table"></tbody>
-          </table>
+          <!-- Display area for the user's links. -->
+          <div id="funny-links">
+            <h4><em>Funny Links</em></h4>
+            <ul id="funny-links-list">
+              <li class="hide"></li>
+            </ul>
+          </div>
+          <div id="informative-links">
+            <h4><em>Informative Links</em></h4>
+            <ul id="informative-links-list">
+              <li class="hide"></li>
+            </ul>
+          </div>
+          <div id="silly-links">
+            <h4><em>Silly Links</em></h4>
+            <ul id="silly-links-list">
+              <li class="hide"></li>
+            </ul>
+          </div>
+          <div id="sobering-links">
+            <h4><em>Sobering Links</em></h4>
+            <ul id="sobering-links-list">
+              <li class="hide"></li>
+            </ul>
+          </div>
+          <div id="strange-links">
+            <h4><em>Strange Links</em></h4>
+            <ul id="strange-links-list">
+              <li class="hide"></li>
+            </ul>
+          </div>
 
         </div> <!-- End of links -->
 
@@ -320,13 +159,31 @@ XHTML page for Project 4.  This page allows a user to update his or her
             <form class="form-div" id="content-form" action="">
 
               <p>
+                <div class="image-options">
+                  <br /><br />
+                  <strong><em><small>Available images:</small></em></strong>
+                  <br /><em><small>benjamin-harrison.jpg</small></em>
+                  <br /><em><small>james-buchanan.jpg</small></em>
+                  <br /><em><small>martin-van-buren.jpg</small></em><br /><br />
+                </div>
+
+                <label>Post an Image:
+                  <input class="text" id="content-image" type="text"
+                    size="100%" />
+                </label>
+              </p>
+
+              <p>
                 <label>
                   <input class="btn" type="button" value="Post Image"
                     onclick="postImage();" />
                 </label>
-                <label>
-                  <input class="text" id="content-image" type="text"
-                    size="100%" />
+              </p>
+
+              <p>
+                <label>Post a Status:
+                  <textarea class="text" id="content-status" rows="4"
+                    cols="100%"></textarea>
                 </label>
               </p>
 
@@ -335,9 +192,12 @@ XHTML page for Project 4.  This page allows a user to update his or her
                   <input class="btn" type="button" value="Post Status"
                     onclick="postStatus();" />
                 </label>
-                <label>
-                  <textarea class="text" id="content-status"
-                  type="textarea" rows="4" cols="100%"></textarea>
+              </p>
+
+              <p>
+                <label>Post a Link:
+                  <input class="text" id="content-url" type="text"
+                    size="100%" />
                 </label>
               </p>
 
@@ -346,17 +206,14 @@ XHTML page for Project 4.  This page allows a user to update his or her
                   <input class="btn" type="button" value="Post Link"
                     onclick="postLink();" />
                 </label>
-                <label>
-                  <input class="text" id="content-url" type="text" size="100%" />
-                </label>
               </p>
 
             </form>
           </div> <!-- End of update-content -->
 
           <div class="content-div" id="display-content">
-            
-            <h2>Display Content</h2>
+
+            <h2>Feed</h2>
 
             <div id="page-posts"></div>
 
