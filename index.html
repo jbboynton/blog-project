@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- James Boynton
+3/20/16
+COMI 2010 Client-Side Scripting Languages
+Project 2
+blog.html
+XHTML page for Project 4.  This page allows a user to update his or her
+  profile.  The user can update their personal info and their links of interest.
+  They can also post content to their page.  Posts can be images, statuses, or
+  links. -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Project 4</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <!-- Import Google fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'
+      type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Unica+One'
+      rel='stylesheet' type='text/css' />
+    <script type="text/javascript" src="scripts.js"></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+      <div class="page-title">
+        <h1>MyFace Blog Site</h1>
+      </div>
+
+      <div class="clearfix"></div>
+      <div class="main-content">
+
+        <!-- Author's name, image, and a description of the author -->
+        <div class="content-div" id="header">
+          <h2>Enter Profile Information</h2>
+
+          <!-- Form for updating profile info.  All forms must be completed. -->
+          <form class="form-div" id="profile-form" action="">
+
+            <p>
+              <label>Name:
+                <input class="text" id="profile-name" type="text" size="100%" />
+              </label>
+            </p>
+
+            <p>
+              <label>Add an image:
+                <input class="text" id="profile-image" type="text"
+                  size="100%" />
+              </label>
+            </p>
+
+            <div class="image-options">
+              <em><strong>Available images:</strong>
+                <br />benjamin-harrison.jpg, james-buchanan.jpg,
+                martin-van-buren.jpg</em><br />
+            </div>
+
+            <p>
+              <label>Description:
+                <textarea class="text" id="profile-description" rows="4"
+                  cols="100%"></textarea>
+              </label>
+            </p>
+
+            <p>
+              <label>
+                <input class="btn" type="button" value="Submit"
+                  onclick="updateProfile();" />
+              </label>
+              <label>
+                <input class="btn" type="reset" value="Clear" />
+              </label>
+            </p>
+
+          </form>
+        </div> <!-- End of header -->
+
+        <!-- Author's links and link categories.  All fields are required. -->
+        <div class="content-div" id="links">
+          <h2>Add a Link</h2>
+
+          <form class="form-div" id="link-form" action="">
+
+            <p>
+              <label>Enter a URL:
+                <input class="text" id="link-url" type="text" size="100%" />
+              </label>
+            </p>
+
+            <p>
+              <label>Link Category:
+                <br /><br />
+                <select class="link-dropdown" id="link-category">
+                  <option class="hide"></option>
+                  <option>Funny</option>
+                  <option>Informative</option>
+                  <option>Silly</option>
+                  <option>Sobering</option>
+                  <option>Strange</option>
+                </select>
+              </label>
+            </p>
+
+            <p>
+              <label>
+                <input class="btn" type="button" value="Add Link"
+                  onclick="appendLinks();" />
+              </label>
+            </p>
+
+          </form>
+
+          <div class="link-lists">
+            <!-- Display area for the user's links. -->
+            <div id="funny-links">
+              <h4><em>Funny Links</em></h4>
+              <ul id="funny-links-list">
+                <li class="hide"></li>
+              </ul>
+            </div>
+            <div id="informative-links">
+              <h4><em>Informative Links</em></h4>
+              <ul id="informative-links-list">
+                <li class="hide"></li>
+              </ul>
+            </div>
+            <div id="silly-links">
+              <h4><em>Silly Links</em></h4>
+              <ul id="silly-links-list">
+                <li class="hide"></li>
+              </ul>
+            </div>
+            <div id="sobering-links">
+              <h4><em>Sobering Links</em></h4>
+              <ul id="sobering-links-list">
+                <li class="hide"></li>
+              </ul>
+            </div>
+            <div id="strange-links">
+              <h4><em>Strange Links</em></h4>
+              <ul id="strange-links-list">
+                <li class="hide"></li>
+              </ul>
+            </div>
+          </div>
+
+        </div> <!-- End of links -->
+
+        <!-- Main content of the page.  Posts can be images, statuses
+          (text), or links.  Most recent post appears on top. -->
+        <div id="content">
+          <div class="content-div" id="update-content">
+            <h2>Update Page</h2>
+
+            <form class="form-div" id="content-form" action="">
+
+              <p>
+                <label>Post an Image:
+                  <input class="text" id="content-image" type="text"
+                    size="100%" />
+                </label>
+              </p>
+
+              <div class="image-options">
+                <em><strong>Available images:</strong>
+                  <br />benjamin-harrison.jpg, james-buchanan.jpg,
+                  martin-van-buren.jpg</em><br />
+              </div>
+
+              <p>
+                <label>
+                  <input class="btn" type="button" value="Post Image"
+                    onclick="postImage();" />
+                </label>
+              </p>
+
+              <p>
+                <label>Post a Status:
+                  <textarea class="text" id="content-status" rows="4"
+                    cols="100%"></textarea>
+                </label>
+              </p>
+
+              <p>
+                <label>
+                  <input class="btn" type="button" value="Post Status"
+                    onclick="postStatus();" />
+                </label>
+              </p>
+
+              <p>
+                <label>Post a Link:
+                  <input class="text" id="content-url" type="text"
+                    size="100%" />
+                </label>
+              </p>
+
+              <p>
+                <label>
+                  <input class="btn" type="button" value="Post Link"
+                    onclick="postLink();" />
+                </label>
+              </p>
+
+            </form>
+          </div> <!-- End of update-content -->
+
+          <div class="content-div" id="display-content">
+
+            <h2>Feed</h2>
+
+            <div id="page-posts"></div>
+
+          </div> <!-- End of display-content -->
+        </div> <!-- End of content-area -->
+
+      </div> <!-- End of main-content -->
+
+    </div> <!-- End of wrapper -->
+  </body>
+</html>
